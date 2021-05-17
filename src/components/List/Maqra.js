@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import { Flex, Box } from "theme-ui";
 
 import { MainContext } from "../../context";
-import maqraData from "../../mushaf/maqraData";
+import d from "../../mushaf/maqraData";
+
+const maqras = d.flat();
 
 const Page = ({ page }) => (
   <Box sx={{ margin: "0 5% 0 5%", flexBasis: "auto" }}>{page}</Box>
@@ -19,7 +21,7 @@ const Verse = ({ index }) => {
         textOverflow: "ellipsis",
       }}
     >
-      <span>{maqraData[index]}</span>
+      <span>{maqras[index]}</span>
     </Box>
   );
 };

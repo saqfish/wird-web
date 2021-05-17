@@ -1,6 +1,8 @@
 import juzes from "../mushaf/maqras";
 import quran from "../mushaf/quran";
 
+const maqras = juzes.flat();
+
 const getJuzIndex = (maqra) => Math.ceil(maqra / 8);
 const getMaqraIndex = (maqra) => Math.ceil(maqra % 8);
 
@@ -17,14 +19,14 @@ const getSurah = (verse) => {
 
 const nextJuz = (page, offset) => {
   const index = getJuzIndex(page, offset);
-  if (index >= 29) return juzes[index];
-  else return juzes[index + 1];
+  if (index >= 29) return maqras[index];
+  else return maqras[index + 1];
 };
 
 const prevJuz = (page, offset) => {
   const index = getJuzIndex(page, offset);
-  if (index < 1) return juzes[index];
-  else return juzes[index - 1];
+  if (index < 1) return maqras[index];
+  else return maqras[index - 1];
 };
 
 const generatePageNumbers = (start, end) => {
@@ -35,8 +37,8 @@ const generatePageNumbers = (start, end) => {
 
 const generatePages = (maqra, offset) => {
   let pages = generatePageNumbers(
-    juzes[maqra].page.start + offset,
-    juzes[maqra].page.end + offset
+    maqras[maqra].page.start + offset,
+    maqras[maqra].page.end + offset
   );
   return pages.flat();
 };

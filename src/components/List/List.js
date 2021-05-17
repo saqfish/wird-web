@@ -3,8 +3,9 @@ import { Flex } from "theme-ui";
 import Control from "./Control";
 import Maqra from "./Maqra";
 
-import data from "../..//mushaf/maqras";
+import d from "../..//mushaf/maqras";
 
+const data = d.flat();
 const start = (j) => j * 8;
 const end = (j) => j * 8 + 8;
 
