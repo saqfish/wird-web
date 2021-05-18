@@ -2,10 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { Spinner } from "theme-ui";
 
 const Canvas = (props) => {
-  const { id, page } = props;
+  const { id, page, first, verse } = props;
   const [loading, setLoading] = useState(true);
   const canvasRef = useRef(null);
   const mounted = useRef(true);
+
+  const drawMaqra = (ctx, canvas) => {
+    let sec = 0;
+    const line = canvas.height / 15;
+    if (first) sec = line * (verse.line < 14 ? verse.line : 0);
+    ctx.fillStyle = "rgba(0,255,127,0.2)";
+    ctx.fillRect(0, sec, canvas.width, canvas.height);
+  };
 
   const drawImage = (image) => {
     if (canvasRef.current) {
@@ -20,6 +28,7 @@ const Canvas = (props) => {
         image.width < window.innerWidth ? image.width : "100vw";
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(image, 0, 0);
+      if (page > 4) drawMaqra(ctx, canvas);
     }
   };
 

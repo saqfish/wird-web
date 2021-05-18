@@ -3,11 +3,24 @@ import { Flex } from "theme-ui";
 
 import Canvas from "./Canvas";
 import { MainContext } from "../../context";
-import { generatePages } from "../../lib/common";
+import { getMaqra, generatePages } from "../../lib/common";
+import verses from "../../mushaf/verses";
+import quran from "../../mushaf/quran";
+
+let v = [];
+for (let chapter of quran) {
+  v = v.concat(chapter.verses);
+}
 
 const Mushaf = () => {
   const { maqra, offset } = useContext(MainContext);
+  const m = getMaqra(maqra);
   const pages = generatePages(maqra, offset);
+
+  const data = (page) => ({
+    verse: verses[m.start-1],
+    first: page === m.page.start + offset && page > 1,
+  });
 
   return (
     <Flex
@@ -18,8 +31,15 @@ const Mushaf = () => {
         minWidth: 576,
       }}
     >
-      {pages.map((p, id) => (
-        <Canvas {...{ page: p, id }} key={p + id} />
+      {pages.map((page, id) => (
+        <Canvas
+          {...{
+            ...data(page),
+            page,
+            id,
+          }}
+          key={page + id}
+        />
       ))}
     </Flex>
   );

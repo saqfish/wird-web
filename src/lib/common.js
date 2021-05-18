@@ -17,6 +17,8 @@ const getSurah = (verse) => {
   }
 };
 
+const getMaqra = (index) => maqras[index];
+
 const nextJuz = (page, offset) => {
   const index = getJuzIndex(page, offset);
   if (index >= 29) return maqras[index];
@@ -47,6 +49,7 @@ export {
   getJuzIndex,
   getMaqraIndex,
   getSurah,
+  getMaqra,
   nextJuz,
   prevJuz,
   generatePageNumbers,
