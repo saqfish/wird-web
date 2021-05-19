@@ -31,7 +31,7 @@ const DateItem = (props) => {
       m={0.8}
       sx={{
         width: "100%",
-        fontSize: "1.5em",
+        fontSize: ["1rem", "2rem"],
         border: "0.1em solid black",
       }}
       onClick={() => {}}
@@ -46,12 +46,11 @@ const DateItem = (props) => {
 
 const Dates = () => {
   const mounted = useRef(false);
-  const { progress: p, setProgress } = useContext(ProgressContext);
   const { maqra } = useContext(MainContext);
-  const [progress] = useState(p[maqra]);
+  const { progress, setProgress } = useContext(ProgressContext);
 
   const remove = (d) => {
-    const prev = [...p];
+    const prev = [...progress[maqra]];
     prev[maqra].splice(d, 1);
     setProgress(prev);
   };
@@ -72,7 +71,7 @@ const Dates = () => {
         maxHeight: "100%",
       }}
     >
-      {progress.map((data, i) => (
+      {progress[maqra].map((data, i) => (
         <DateItem key={data + i} mounted={mounted} value={data.valueOf()}>
           <Close
             onClick={() => {

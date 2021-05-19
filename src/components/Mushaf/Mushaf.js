@@ -25,10 +25,8 @@ const Mushaf = () => {
   return (
     <Flex
       sx={{
-        flexDirection: "column",
+        flexDirection: "row-reverse",
         overflow: "auto",
-        height: "100%",
-        minWidth: 576,
       }}
     >
       {pages.map((page, id) => (

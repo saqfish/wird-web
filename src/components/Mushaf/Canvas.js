@@ -11,7 +11,7 @@ const Canvas = (props) => {
     let sec = 0;
     const line = canvas.height / 15;
     if (first) sec = line * (verse.line < 14 ? verse.line : 0);
-    ctx.fillStyle = "rgba(0,255,127,0.2)";
+    ctx.fillStyle = "rgba(0,255,127,0.1)";
     ctx.fillRect(0, sec, canvas.width, canvas.height);
   };
 

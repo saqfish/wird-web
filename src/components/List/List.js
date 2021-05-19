@@ -24,7 +24,7 @@ const List = () => {
         sx={{
           flexDirection: "column",
           fontFamily: "KFGQPC DOORI Uthmanic Script",
-          fontSize: "2em",
+          fontSize: ["1em", "2em"],
         }}
       >
         {maqras.map((maqra, m) => (

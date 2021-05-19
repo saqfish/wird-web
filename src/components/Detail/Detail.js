@@ -11,7 +11,7 @@ const Detail = () => {
         padding: 2,
         width: "100%",
         flexDirection: "column",
-        overflow: "hide",
+        overflow: "auto",
       }}
     >
       <Control />

@@ -21,9 +21,9 @@ const Control = () => {
         type="datetime-local"
         ref={dateRef}
         defaultValue={dayjs(date).format("YYYY-MM-DDTHH:mm:ss")}
-        style={{ fontSize: "2em" }}
+        style={{ fontSize: "inherit" }}
       />
-      <Button mr={5} onClick={() => markDate(dateRef)}>
+      <Button mr={1} onClick={() => markDate(dateRef)}>
         Mark
       </Button>
     </Flex>

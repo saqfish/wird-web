@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Mushaf from "./Mushaf/Mushaf";
 import Stats from "./Stats/Stats";
-import Detail from "./Detail/Detail";
 
 import { MainContext } from "../context";
 import { views } from "./views";
@@ -12,7 +11,6 @@ const View = () => {
     const v = {
       [views.MUSHAF]: () => <Mushaf />,
       [views.STATS]: () => <Stats />,
-      [views.DETAIL]: () => <Detail />,
     };
     return v[view]();
   };

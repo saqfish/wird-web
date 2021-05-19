@@ -4,7 +4,7 @@ import Juz from "./Juz";
 const Control = (props) => {
   const { juz, setJuz } = props;
   return (
-    <Flex sx={{ padding: 2, justifyContent: "flex-end" }}>
+    <Flex sx={{ padding: 1, justifyContent: "flex-end" }}>
       <Box>
         <Juz label={`Juz ${juz + 1}`} />
       </Box>
