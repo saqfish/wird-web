@@ -12,6 +12,7 @@ const Mushaf = () => {
 
   const pos =
     maqra < 1 ? 0 : mushaf.verses[mushaf.maqras()[maqra].verse.number - 2].line;
+
   return (
     <Flex
       sx={{
@@ -23,7 +24,7 @@ const Mushaf = () => {
         <Canvas
           {...{
             pos,
-            first: mushaf.maqras()[maqra].page.start,
+            first: page === mushaf.maqras()[maqra].page.start + offset,
             page,
             id,
           }}

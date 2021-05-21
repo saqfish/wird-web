@@ -2,25 +2,20 @@ import React, { useContext } from "react";
 
 import { MainContext } from "../../context";
 import Button from "../Controls/Button";
-import { Flex, MenuButton, Close } from "theme-ui";
+import { Flex, MenuButton } from "theme-ui";
 import { views } from "../views";
 
 const Controls = () => {
   const { view, open, setOpen } = useContext(MainContext);
 
   return (
-    <Flex sx={{ justifyContent: "flex-end" }}>
+    <Flex ml={2} sx={{ justifyContent: "flex-end" }}>
       {!open ? (
         <MenuButton
           sx={{ height: "100%", flex: 1, justifyContent: "flex-start" }}
           onClick={() => setOpen(true)}
         />
-      ) : (
-        <Close
-          sx={{ height: "100%", flex: 1, justifyContent: "flex-start" }}
-          onClick={() => setOpen(false)}
-        />
-      )}
+      ) : null}
       {view !== views.MUSHAF && view !== views.HOME ? (
         <Button text="Mushaf" view={views.MUSHAF} />
       ) : null}

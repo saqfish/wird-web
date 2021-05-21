@@ -12,10 +12,11 @@ const List = () => {
     <>
       <Control {...{ juz, setJuz }} />
       <Flex
+        mt={2}
         sx={{
           flexDirection: "column",
           fontFamily: "KFGQPC DOORI Uthmanic Script",
-          fontSize: ["1em", "2em"],
+          fontSize: "1.2em",
         }}
       >
         {maqras.map((maqra, m) => (
@@ -23,7 +24,7 @@ const List = () => {
             <Maqra
               {...{
                 maqra,
-                index: juz * 8 + m,
+                index: (juz - 1) * 8 + m,
               }}
             />
           </div>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Flex, Divider } from "theme-ui";
+import React, { useState } from "react";
+import { Container, Flex, Divider } from "theme-ui";
 import { ThemeProvider } from "theme-ui";
 import theme from "./theme";
 
@@ -23,8 +23,6 @@ const Main = () => {
   const [maqra, setMaqra] = useState(0);
   const [progress, setProgress] = useState(initProgress());
 
-  useEffect(() => setOpen(false), [maqra]);
-
   return (
     <ThemeProvider theme={theme}>
       <Flex
@@ -46,22 +44,33 @@ const Main = () => {
           }}
         >
           <Controls />
-          <Flex sx={{ flexGrow: 1, minWidth: 0, height: 0 }}>
-            {open ? (
-              <ProgressContext.Provider value={{ progress, setProgress }}>
+          {open ? (
+            <ProgressContext.Provider value={{ progress, setProgress }}>
+              <Container
+                bg="gray"
+                pr={[0, 0.8]}
+                sx={{
+                  minWidth: ["100%", "30%"],
+                  maxWidth: ["100%", "30%"],
+                  height: "100vh",
+                  position: "fixed",
+                }}
+              >
                 <Flex
+                  bg="background"
                   sx={{
+                    height: "100vh",
                     flexDirection: "column",
-                    minWidth: ["100%", "30%"],
-                    maxWidth: ["100%", "30%"],
                   }}
                 >
                   <List />
                   <Divider />
                   <Detail />
                 </Flex>
-              </ProgressContext.Provider>
-            ) : null}
+              </Container>
+            </ProgressContext.Provider>
+          ) : null}
+          <Flex sx={{ flexGrow: 1, height: "100%", minWidth: 0 }}>
             <Flex
               bg="muted"
               sx={{

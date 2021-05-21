@@ -1,11 +1,11 @@
 import React, { useContext, useRef } from "react";
 
-import { Flex, Button } from "theme-ui";
+import { Flex, Input, Button } from "theme-ui";
 import { MainContext, ProgressContext } from "../../context";
 import dayjs from "dayjs";
 
 const Control = () => {
-  const { date, setDate, maqra } = useContext(MainContext);
+  const { date, maqra } = useContext(MainContext);
   const { progress, setProgress } = useContext(ProgressContext);
   const dateRef = useRef(null);
 
@@ -17,13 +17,13 @@ const Control = () => {
 
   return (
     <Flex sx={{ justifyContent: "flex-end" }}>
-      <input
+      <Input
         type="datetime-local"
         ref={dateRef}
         defaultValue={dayjs(date).format("YYYY-MM-DDTHH:mm:ss")}
-        style={{ fontSize: "inherit" }}
+        sx={{ fontSize: "1rem" }}
       />
-      <Button mr={1} onClick={() => markDate(dateRef)}>
+      <Button ml={1} mr={2} onClick={() => markDate(dateRef)}>
         Mark
       </Button>
     </Flex>

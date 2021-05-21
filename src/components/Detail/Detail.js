@@ -7,11 +7,12 @@ import { Flex } from "theme-ui";
 const Detail = () => {
   return (
     <Flex
+      p={1}
       sx={{
-        padding: 2,
         width: "100%",
         flexDirection: "column",
         overflow: "auto",
+        fontSize: "0.2rem",
       }}
     >
       <Control />

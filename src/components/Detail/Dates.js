@@ -28,15 +28,14 @@ const DateItem = (props) => {
     <Flex
       bg="primary"
       color="background"
-      m={0.8}
+      mt={1}
       sx={{
         width: "100%",
-        fontSize: ["1.5rem"],
-        border: "0.1em solid black",
+        border: "0.1rem solid black",
       }}
       onClick={() => {}}
     >
-      <Box ml={2} sx={{ flexGrow: 1 }}>
+      <Box p={1} sx={{ flexGrow: 1 }}>
         {dayjs(date).fromNow()}
       </Box>
       {props.children}
@@ -74,6 +73,7 @@ const Dates = () => {
       {progress[maqra].map((data, i) => (
         <DateItem key={data + i} mounted={mounted} value={data.valueOf()}>
           <Close
+            sx={{ height: "2rem", width: "2rem" }}
             onClick={() => {
               remove(i);
             }}
