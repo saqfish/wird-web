@@ -1,27 +1,17 @@
 import React, { useContext } from "react";
 import { Flex } from "theme-ui";
+import { mushaf } from "mushaf";
 
 import Canvas from "./Canvas";
 import { MainContext } from "../../context";
-import { getMaqra, generatePages } from "../../lib/common";
-import verses from "../../mushaf/verses";
-import quran from "../../mushaf/quran";
-
-let v = [];
-for (let chapter of quran) {
-  v = v.concat(chapter.verses);
-}
+import { generatePages } from "../../lib/common";
 
 const Mushaf = () => {
   const { maqra, offset } = useContext(MainContext);
-  const m = getMaqra(maqra);
   const pages = generatePages(maqra, offset);
 
-  const data = (page) => ({
-    verse: verses[m.start-1],
-    first: page === m.page.start + offset && page > 1,
-  });
-
+  const pos =
+    maqra < 1 ? 0 : mushaf.verses[mushaf.maqras()[maqra].verse.number - 2].line;
   return (
     <Flex
       sx={{
@@ -32,7 +22,8 @@ const Mushaf = () => {
       {pages.map((page, id) => (
         <Canvas
           {...{
-            ...data(page),
+            pos,
+            first: mushaf.maqras()[maqra].page.start,
             page,
             id,
           }}

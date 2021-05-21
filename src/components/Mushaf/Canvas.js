@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Spinner } from "theme-ui";
 
 const Canvas = (props) => {
-  const { id, page, first, verse } = props;
+  const { id, page, first, pos } = props;
   const [loading, setLoading] = useState(true);
   const canvasRef = useRef(null);
   const mounted = useRef(true);
@@ -10,7 +10,7 @@ const Canvas = (props) => {
   const drawMaqra = (ctx, canvas) => {
     let sec = 0;
     const line = canvas.height / 15;
-    if (first) sec = line * (verse.line < 14 ? verse.line : 0);
+    if (first) sec = line * pos;
     ctx.fillStyle = "rgba(0,255,127,0.1)";
     ctx.fillRect(0, sec, canvas.width, canvas.height);
   };

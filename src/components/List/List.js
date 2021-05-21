@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Flex } from "theme-ui";
+import { mushaf } from "mushaf";
 import Control from "./Control";
 import Maqra from "./Maqra";
 
-import d from "../..//mushaf/maqras";
-
-const data = d.flat();
-const start = (j) => j * 8;
-const end = (j) => j * 8 + 8;
-
 const List = () => {
-  const [juz, setJuz] = useState(0);
-  const [maqras, setMaqras] = useState(data.slice(start(juz), end(juz)));
-
-  useEffect(() => {
-    setMaqras(data.slice(start(juz), end(juz)));
-  }, [juz]);
+  const [juz, setJuz] = useState(1);
+  const [maqras] = useState(mushaf.juz(juz));
 
   return (
     <>

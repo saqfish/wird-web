@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, Divider } from "theme-ui";
 import { ThemeProvider } from "theme-ui";
 import theme from "./theme";
@@ -22,6 +22,8 @@ const Main = () => {
   const [open, setOpen] = useState(false);
   const [maqra, setMaqra] = useState(0);
   const [progress, setProgress] = useState(initProgress());
+
+  useEffect(() => setOpen(false), [maqra]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -50,8 +52,8 @@ const Main = () => {
                 <Flex
                   sx={{
                     flexDirection: "column",
-                    minWidth: ["100vw", "30vw"],
-                    maxWidth: ["100vw", "30vw"],
+                    minWidth: ["100%", "30%"],
+                    maxWidth: ["100%", "30%"],
                   }}
                 >
                   <List />

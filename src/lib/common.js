@@ -1,35 +1,30 @@
-import juzes from "../mushaf/maqras";
-import quran from "../mushaf/quran";
-
-const maqras = juzes.flat();
+import { mushaf } from "mushaf";
 
 const getJuzIndex = (maqra) => Math.floor(maqra / 8);
 const getMaqraIndex = (maqra) => Math.ceil(maqra % 8);
-const getMaqra = (index) => maqras[index];
-const getMaqras = (j) => juzes[j]
+const getMaqra = (index) => mushaf.sections[index];
+const getMaqras = (j) => mushaf.juzs()[j];
 
 const getSurah = (verse) => {
   let count = 0;
-  for (let chapter of quran) {
-    if (count + chapter.numVerses > verse) {
-	    const v = verse - count;
-	    return {chapter, v};
-    }
-    else count += chapter.numVerses;
+  for (let surah of mushaf.surahs()) {
+    if (count + surah.numVerses > verse) {
+      const v = verse - count;
+      return { surah, v };
+    } else count += surah.numVerses;
   }
 };
 
-
 const nextJuz = (page, offset) => {
   const index = getJuzIndex(page, offset);
-  if (index >= 29) return maqras[index];
-  else return maqras[index + 1];
+  if (index >= 29) return mushaf.sections[index];
+  else return mushaf.sections[index + 1];
 };
 
 const prevJuz = (page, offset) => {
   const index = getJuzIndex(page, offset);
-  if (index < 1) return maqras[index];
-  else return maqras[index - 1];
+  if (index < 1) return mushaf.sections[index];
+  else return mushaf.sections[index - 1];
 };
 
 const generatePageNumbers = (start, end) => {
@@ -40,8 +35,8 @@ const generatePageNumbers = (start, end) => {
 
 const generatePages = (maqra, offset) => {
   let pages = generatePageNumbers(
-    maqras[maqra].page.start + offset,
-    maqras[maqra].page.end + offset
+    mushaf.sections[maqra].page.start + offset,
+    mushaf.sections[maqra].page.end + offset
   );
   return pages.flat();
 };

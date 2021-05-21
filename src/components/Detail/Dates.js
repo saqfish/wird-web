@@ -31,7 +31,7 @@ const DateItem = (props) => {
       m={0.8}
       sx={{
         width: "100%",
-        fontSize: ["1rem", "2rem"],
+        fontSize: ["1.5rem"],
         border: "0.1em solid black",
       }}
       onClick={() => {}}
@@ -50,7 +50,7 @@ const Dates = () => {
   const { progress, setProgress } = useContext(ProgressContext);
 
   const remove = (d) => {
-    const prev = [...progress[maqra]];
+    const prev = [...progress];
     prev[maqra].splice(d, 1);
     setProgress(prev);
   };
