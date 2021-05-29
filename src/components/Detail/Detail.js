@@ -12,7 +12,7 @@ const Detail = () => {
         width: "100%",
         flexDirection: "column",
         overflow: "auto",
-        fontSize: "0.2rem",
+        fontSize: "1.2rem",
       }}
     >
       <Control />

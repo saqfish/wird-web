@@ -7,7 +7,7 @@ import { MainContext } from "../../context";
 const Page = ({ page }) => (
   <Box sx={{ margin: "0 5% 0 5%", flexBasis: "auto" }}>{page}</Box>
 );
-const Verse = ({ index }) => {
+const Verse = ({ verse }) => {
   return (
     <Box
       sx={{
@@ -19,7 +19,7 @@ const Verse = ({ index }) => {
         textOverflow: "ellipsis",
       }}
     >
-      <span>{mushaf.maqras()[index].verse.text}</span>
+      <span>{verse}</span>
     </Box>
   );
 };
@@ -39,7 +39,7 @@ const Maqra = (props) => {
         setMaqra(index);
       }}
     >
-      <Verse index={index} />
+      <Verse verse={maqra.verse.text} />
       <Page page={maqra.page.start} />
     </Flex>
   );

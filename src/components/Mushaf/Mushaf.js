@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 import { Flex } from "theme-ui";
-import { mushaf } from "mushaf";
+import m from "mushaf";
+import { duri } from "abu_amr";
 
 import Canvas from "./Canvas";
 import { MainContext } from "../../context";
-import { generatePages } from "../../lib/common";
+
+const mushaf = m(duri);
 
 const Mushaf = () => {
   const { maqra, offset } = useContext(MainContext);
-  const pages = generatePages(maqra, offset);
+  const pages = mushaf.generatePages(maqra, offset);
 
   const pos =
     maqra < 1 ? 0 : mushaf.verses[mushaf.maqras()[maqra].verse.number - 2].line;

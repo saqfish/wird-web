@@ -9,7 +9,7 @@ const Controls = () => {
   const { view, open, setOpen } = useContext(MainContext);
 
   return (
-    <Flex ml={2} sx={{ justifyContent: "flex-end" }}>
+    <Flex sx={{ margin:"0 0 0 0.5rem", justifyContent: "flex-end" }}>
       {!open ? (
         <MenuButton
           sx={{ height: "100%", flex: 1, justifyContent: "flex-start" }}

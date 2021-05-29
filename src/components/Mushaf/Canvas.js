@@ -10,7 +10,7 @@ const Canvas = (props) => {
   const drawMaqra = (ctx, canvas) => {
     let sec = 0;
     const line = canvas.height / 15;
-    if (first) sec = line * pos;
+    if (first) sec = pos < 14 ? line * pos : 0;
     ctx.fillStyle = "rgba(0,255,127,0.1)";
     ctx.fillRect(0, sec, canvas.width, canvas.height);
   };
@@ -54,7 +54,11 @@ const Canvas = (props) => {
   const scrollToNextPage = (id) => {
     const canvas = document.getElementById(`canvas-${id + 1}`);
     if (canvas) {
-      canvas.scrollIntoView();
+      canvas.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start",
+      });
     } else scrollToNextPage(0);
   };
 

@@ -7,7 +7,7 @@ const Control = (props) => {
   const { open, setOpen } = useContext(MainContext);
   const { juz, setJuz } = props;
   return (
-	  <Flex sx={{ margin:"0.5rem 0 0 0.5rem", justifyContent: "flex-end" }}>
+    <Flex sx={{ margin: "0.5rem 0 0 0.5rem", justifyContent: "flex-end" }}>
       {!open ? (
         <MenuButton
           sx={{ height: "100%", flex: 1, justifyContent: "flex-start" }}
@@ -26,7 +26,7 @@ const Control = (props) => {
         <Button
           mr={2}
           variant="primary"
-          onClick={() => setJuz((juz) => (0 ? juz - 1 : juz))}
+          onClick={() => setJuz(juz > 1 ? juz - 1 : juz)}
         >
           Prev
         </Button>

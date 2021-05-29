@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Flex } from "theme-ui";
-import { mushaf } from "mushaf";
 import Control from "./Control";
 import Maqra from "./Maqra";
+import { MainContext } from "../../context";
+
+import m from "mushaf";
+import { duri } from "abu_amr";
+
+const mushaf = m(duri);
 
 const List = () => {
-  const [juz, setJuz] = useState(1);
-  const [maqras] = useState(mushaf.juz(juz));
+  const { maqra } = useContext(MainContext);
+  const [juz, setJuz] = useState(mushaf.getJuzIndex(maqra) + 1);
+  const [maqras, setMaqras] = useState(mushaf.juz(juz));
+
+  useEffect(() => setMaqras(mushaf.juz(juz)), [juz]);
 
   return (
     <>
